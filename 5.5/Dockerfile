@@ -16,7 +16,8 @@ RUN apt-get update \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /var/lib/mysql \
 	&& mkdir /var/lib/mysql \
-	&& sed -ri 's/^(bind-address|skip-networking)/;\1/' /etc/mysql/my.cnf
+	&& sed -ri 's/^(bind-address|skip-networking)/;\1/' /etc/mysql/my.cnf \
+	&& sed -ri '/\[mysql\]/alower_case_table_names=1' /etc/mysql/my.cnf
 
 VOLUME /var/lib/mysql
 
