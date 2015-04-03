@@ -11,13 +11,13 @@ ENV PERCONA_MAJOR 5.5
 ENV PERCONA_VERSION 5.5.42-rel37.1-1.wheezy
 
 RUN apt-get update \
-	&& apt-get install -y \
+	&& apt-get install -y less vim \
 		percona-server-server-$PERCONA_MAJOR=$PERCONA_VERSION \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /var/lib/mysql \
 	&& mkdir /var/lib/mysql \
 	&& sed -ri 's/^(bind-address|skip-networking)/;\1/' /etc/mysql/my.cnf \
-	&& sed -ri '/\[mysql\]/alower_case_table_names=1' /etc/mysql/my.cnf
+	&& sed -ri '/\[mysqld\]/alower_case_table_names=1' /etc/mysql/my.cnf
 
 VOLUME /var/lib/mysql
 
