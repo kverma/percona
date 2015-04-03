@@ -11,7 +11,7 @@ ENV PERCONA_MAJOR 5.6
 ENV PERCONA_VERSION 5.6.23-72.1-1.wheezy
 
 RUN apt-get update \
-	&& apt-get install -y vi less\
+	&& apt-get install -y \
 		percona-server-server-$PERCONA_MAJOR=$PERCONA_VERSION \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /var/lib/mysql \
